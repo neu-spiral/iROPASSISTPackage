@@ -1,0 +1,5 @@
+name: master
+channels:
+  - defaults
+prefix: /Users/veysiyildiz/anaconda/envs/master
+
