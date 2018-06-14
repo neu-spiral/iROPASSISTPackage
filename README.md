@@ -14,12 +14,12 @@ This documentation contains the instructions on how to run the code
 
 Type following line in the 'Anaconda Prompt' or 'Terminal':
 ```
-python mainScript.py "example/" "imgNames.xlsx" "scores.xlsx" 
+python mainScript.py "example/" "exampleImages.xlsx" "scoresOfExampleImages.xlsx" 
 ```
-This code evaluates  the features for all images which are listed in the `imgNames.xlsx`  file and located in the `example` folder which should be located in the 'data' folder.
+This code evaluates  the features for all images which are listed in the `exampleImages.xlsx`  file and located in the `example` folder which should be located in the 'data' folder.
 At the end, the scores would be saved in :
 ```
-../data/example/scores.xlsx
+../data/example/scoresOfExampleImages.xlsx
 ```
 Detailed usage for the code is provided at the end of the document.
 
@@ -41,18 +41,18 @@ Inputs to mainScript are as follows:
 
 | Option | Description |
 | ------ | ----------- |
-| pathToFolder |  A string denoting the name of the folder containing all the images need to be processed and xlsx file which has the image information.  |
+| pathToFolder |  A string denoting the name of the folder (located under 'data' folder) containing all the images need to be processed and xlsx file which has the image information.  |
 | imageNamesXlsxFile | A string denoting the '.xlsx' filename in the folder. In this Excel spreadsheet, first column is the image name ending with 'bmp','png',etc. Second column is the corresponding segmentation name. If segmentation images are provided, they should be located under 'Segmented' file under the folder where the color images and imageNames.xlsx file are located. The third and fourth column are the disc center for the image in (column, row) order. Note that imageNames column is required for code to run, the other columns are optional (if not provided, the system will run additional scripts to determine those information) |
-| scoreFileName |  A string denoting the '.xlsx' file name , that would contain the image names and its corresponding severity scores. |
+| scoreFileName |  A string denoting the score file name , that would contain the image names and its corresponding severity scores. |
 | saveDebug (optional) | If 1 (default) the system will save the debug files (features, vessel centerlines). If 0 is provided, debug files will not be saved.|
 |featureFileName (optional) | A string denoting the '.xlsx' file name, that would contain the image names and its features.|
 |predictPlus (optional) | If 1 (default) the system will create severity score from Plus vs Not Plus classifier. If 0 is provided, the system will create severity score from Normal vs Not Normal classifier (Please look at the refrences for details). |
 
 ## Feature and Score Generation
 
-All the features generated are based on 6DD crop size. The severity score (0-100) is for predicting Reference Standard Diagnosis (RSD) in Plus vs Not Plus Category. For generating scores for automatic segmented images, the logistic regression model has been trained with RSD labels. 
+All the features generated are based on 6DD crop size. The severity score (0-100) is for predicting Reference Standard Diagnosis (RSD) in Plus vs Not Plus or Normal vs Not Normal Category. 
 
-Detailed description of features can be found [here](https://drive.google.com/drive/u/0/folders/0B4ARQHzqBTAQcWhjbW1oMDJRM00).
+Detailed description of features can be found the paper. 
 
 ### Team:
 + Veysi Yildiz (yildiz@ece.neu.edu)
@@ -65,6 +65,6 @@ Detailed description of features can be found [here](https://drive.google.com/dr
 
 # Reference
 ---------
-Ataer-Cansizoglu, Esra. "Retinal Image Analytics: A Complete Framework from Segmentation to Diagnosis." Order No. 3701264 Northeastern University, 2015. Ann Arbor: ProQuest. Web. 19 Dec. 2016.
-Bas E, Ataer-Cansizoglu E, Kalpathy-Cramer J, Erdogmus D. Retinal Vasculature Segmentation using Principal Spanning Forests. IEEE International Symposium on Biomedical Imaging (ISBI). 2012; 1792-1795.
+--Ataer-Cansizoglu, Esra. "Retinal Image Analytics: A Complete Framework from Segmentation to Diagnosis." Order No. 3701264 Northeastern University, 2015. Ann Arbor: ProQuest. Web. 19 Dec. 2016.
+--Bas E, Ataer-Cansizoglu E, Kalpathy-Cramer J, Erdogmus D. Retinal Vasculature Segmentation using Principal Spanning Forests. IEEE International Symposium on Biomedical Imaging (ISBI). 2012; 1792-1795.
 
