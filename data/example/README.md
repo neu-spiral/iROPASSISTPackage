@@ -13,6 +13,6 @@ python mainScript.py "example/" "exampleImages.xlsx" "scoresOfExampleImages.xlsx
 Note that features are generated using the segmented images located  under "Segmentated/SegmentationsFromBrownetal".
 
 For details about the segmentation modules please have a look at the following links.
--- [Oribix retina-unet](https://github.com/orobix/retina-unet.git)
+-- [Oribix retina-unet](https://github.com/orobix/retina-unet.git)  \
 -- [Fully automated disease severity assessment and treatment monitoring in retinopathy of prematurity using deep learning](https://doi.org/10.1117/12.2295942)  
 

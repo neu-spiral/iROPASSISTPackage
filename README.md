@@ -2,12 +2,11 @@
 
 
 ***
-![alt text](data/example/examplesTogether.jpg)
-<<<<<<< HEAD
-![alt text](data/example/examplesTogether.jpg?raw=true "Title")
 =======
-![alt text](data/example/examplesTogether.pdf?raw=true "Title")
->>>>>>> 8e0a68ed59a13263a916b57b3bdb8ce463c1bdd4
+
+![alt text](data/example/examplesTogether.jpg?raw=true "Title")
+
+
 
 ## Description
 iROP ASSIST is a Python code package for computer-based ROP image analysis. It can be used to generate a severity score from an original image or from the manually segmented mask. Its main purpose is to test the computer-based system developed by iROP ASSIST team on the larger set of images.
@@ -71,6 +70,6 @@ Detailed description of features can be found the paper.
 
 # Reference
 ---------
---Ataer-Cansizoglu, Esra. "Retinal Image Analytics: A Complete Framework from Segmentation to Diagnosis." Order No. 3701264 Northeastern University, 2015. Ann Arbor: ProQuest. Web. 19 Dec. 2016.
+--Ataer-Cansizoglu, Esra. "Retinal Image Analytics: A Complete Framework from Segmentation to Diagnosis." Order No. 3701264 Northeastern University, 2015. Ann Arbor: ProQuest. Web. 19 Dec. 2016. \
 --Bas E, Ataer-Cansizoglu E, Kalpathy-Cramer J, Erdogmus D. Retinal Vasculature Segmentation using Principal Spanning Forests. IEEE International Symposium on Biomedical Imaging (ISBI). 2012; 1792-1795.
 
