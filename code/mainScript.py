@@ -17,6 +17,7 @@ import argparse
 import generateScore as gs
 import os.path
 import sys
+import pickle
 sys.path.insert(0,'segmentation_package')
 from segment_unet import SegmentUnet
 
@@ -56,16 +57,17 @@ if __name__ == "__main__":
     xl = pd.ExcelFile(path+imageNames)
     first_sheet = xl.parse(xl.sheet_names[0])
 
-    
-
+    with open('../parameters/featureList.txt','rb') as f:
+        featNames= pickle.load(f)
+        
     if args.saveDebug:            
-        outputFeatureDf = pd.DataFrame([],columns=[] )#'SegmentedImageName', 'Features'
+        outputFeatureDf = pd.DataFrame([],columns=['Image Name']+ featNames )#'SegmentedImageName', 'Features'
         featureWriter = pd.ExcelWriter(path+featureFileName, engine='xlsxwriter')
         outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1')
 
-    featureList=['DistanceToDiscCenter','CumulativeTortuosityIndex','IntegratedCurvature(IC)','IntegratedSquaredCurvature(ISC)'\
-                 ,'ICNormalizedbyChordLength','ICNormalizedbyCurveLength','ISCNormalizedbyChordLength','ISCNormalizedbyCurveLength','NormofAcceleration',\
-                 'Curvature','AverageSegmentDiameter','AveragePointDiameter']
+#    featureList=['DistanceToDiscCenter','CumulativeTortuosityIndex','IntegratedCurvature(IC)','IntegratedSquaredCurvature(ISC)'\
+#                 ,'ICNormalizedbyChordLength','ICNormalizedbyCurveLength','ISCNormalizedbyChordLength','ISCNormalizedbyCurveLength','NormofAcceleration',\
+#                 'Curvature','AverageSegmentDiameter','AveragePointDiameter']
 
     outputScoreDf = pd.DataFrame([],columns=['SegmentedImageName','Score'])
     scoreWriter = pd.ExcelWriter(path+scoreFileName, engine='xlsxwriter')
@@ -114,7 +116,7 @@ if __name__ == "__main__":
             features=fes.extractFeatures(splines,segmentedImagePath,cntr)
 
             if args.saveDebug:
-                tempDataFrame=pd.DataFrame([[segmentedImageName]+ list(features)] )#columns=['SegmentedImageName', 'Features']
+                tempDataFrame=pd.DataFrame([[segmentedImageName]+ list(features)], columns=['Image Name']+ featNames)
                 outputFeatureDf=outputFeatureDf.append(tempDataFrame, ignore_index=True)
             score = gs.generateScore(features,isPlus)
             outputScoreDf=outputScoreDf.append(pd.DataFrame([[segmentedImageName,score]],columns=['SegmentedImageName','Score'] ), ignore_index=True)
@@ -123,7 +125,7 @@ if __name__ == "__main__":
             '" could not be found! (Either segmentation code failed or segmanted image is not provided in the folder)')
 
     if args.saveDebug: 
-        outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1',index=False,header=False)
+        outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1',index=False)
         featureWriter.save()
 
     outputScoreDf.to_excel(scoreWriter, sheet_name='Sheet1',index=False)

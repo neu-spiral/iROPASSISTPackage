@@ -217,15 +217,29 @@ def integratedCurvature(cs,a,b):
 		ic(x)=intgrl_a^b |curvature(s)|ds
     '''
     
-    return integrate.quad(lambda t: np.abs(curvature(cs,t)), a , b )[0]
-
+    result, error = integrate.quad(lambda t: np.abs(curvature(cs,t)), a , b )
+    if not error > 1000:        
+        return result
+    else:
+        result, error = integrate.quad(lambda t: np.abs(curvature(cs,t)), a+1 , b-1 )
+        if not error > 1000:        
+            return result
+        return np.nan
+    
 def integratedSquaredCurvature(cs,a,b):
     '''
         Integrated Squared Curvature (ISC): For each segment, the sum of all the square of point curvature value.
 		isc(x)=intgrl_a^b curvature(s)^2 ds
     '''
     
-    return integrate.quad(lambda t: curvature(cs,t)**2, a , b )[0]
+    result, error = integrate.quad(lambda t: curvature(cs,t)**2, a , b )
+    if not error > 1000:        
+        return result
+    else:
+        result, error = integrate.quad(lambda t: curvature(cs,t)**2, a+1 , b-1 )
+        if not error > 1000:        
+            return result        
+        return np.nan 
 
 def icNormalizedByChordLength(cs,a,b,ic=None,chLeng=None):
     '''

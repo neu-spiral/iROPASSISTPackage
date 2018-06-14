@@ -1,0 +1,288 @@
+(lp0
+S'DDC mu1'
+p1
+aS'DDC mu2'
+p2
+aS'DDC Sigma1'
+p3
+aS'DDC Sigma2'
+p4
+aS'DDC Pcomponent1'
+p5
+aS'cti mu1'
+p6
+aS'cti mu2'
+p7
+aS'cti Sigma1'
+p8
+aS'cti Sigma2'
+p9
+aS'cti Pcomponent1'
+p10
+aS'IC mu1'
+p11
+aS'IC mu2'
+p12
+aS'IC Sigma1'
+p13
+aS'IC Sigma2'
+p14
+aS'IC Pcomponent1'
+p15
+aS'ISC mu1'
+p16
+aS'ISC mu2'
+p17
+aS'ISC Sigma1'
+p18
+aS'ISC Sigma2'
+p19
+aS'ISC Pcomponent1'
+p20
+aS'icLc mu1'
+p21
+aS'icLc mu2'
+p22
+aS'icLc Sigma1'
+p23
+aS'icLc Sigma2'
+p24
+aS'icLc Pcomponent1'
+p25
+aS'iscLc mu1'
+p26
+aS'iscLc mu2'
+p27
+aS'iscLc Sigma1'
+p28
+aS'iscLc Sigma2'
+p29
+aS'iscLc Pcomponent1'
+p30
+aS'icLx mu1'
+p31
+aS'icLx mu2'
+p32
+aS'icLx Sigma1'
+p33
+aS'icLx Sigma2'
+p34
+aS'icLx Pcomponent1'
+p35
+aS'iscLx mu1'
+p36
+aS'iscLx mu2'
+p37
+aS'iscLx Sigma1'
+p38
+aS'iscLx Sigma2'
+p39
+aS'iscLx Pcomponent1'
+p40
+aS'curvature mu1'
+p41
+aS'curvature mu2'
+p42
+aS'curvature Sigma1'
+p43
+aS'curvature Sigma2'
+p44
+aS'curvature Pcomponent1'
+p45
+aS'Avg segment diameter mu1'
+p46
+aS'Avg segment diameter mu2'
+p47
+aS'Avg segment diameter Sigma1'
+p48
+aS'Avg segment diameter Sigma2'
+p49
+aS'Avg segment diameter Pcomponent1'
+p50
+aS'Avg point diameter mu1'
+p51
+aS'Avg point diameter mu2'
+p52
+aS'Avg point diameter Sigma1'
+p53
+aS'Avg point diameter Sigma2'
+p54
+aS'Avg point diameter Pcomponent1'
+p55
+aS'DDC min'
+p56
+aS'DDC 2nd min'
+p57
+aS'DDC 2nd max'
+p58
+aS'DDC max'
+p59
+aS'DDC mean'
+p60
+aS'DDC median'
+p61
+aS'DDC cm2'
+p62
+aS'DDC cm3'
+p63
+aS'cti min'
+p64
+aS'cti 2nd min'
+p65
+aS'cti 2nd max'
+p66
+aS'cti max'
+p67
+aS'cti mean'
+p68
+aS'cti median'
+p69
+aS'cti cm2'
+p70
+aS'cti cm3'
+p71
+aS'IC min'
+p72
+aS'IC 2nd min'
+p73
+aS'IC 2nd max'
+p74
+aS'IC max'
+p75
+aS'IC mean'
+p76
+aS'IC median'
+p77
+aS'IC cm2'
+p78
+aS'IC cm3'
+p79
+aS'ISC min'
+p80
+aS'ISC 2nd min'
+p81
+aS'ISC 2nd max'
+p82
+aS'ISC max'
+p83
+aS'ISC mean'
+p84
+aS'ISC median'
+p85
+aS'ISC cm2'
+p86
+aS'ISC cm3'
+p87
+aS'icLc min'
+p88
+aS'icLc 2nd min'
+p89
+aS'icLc 2nd max'
+p90
+aS'icLc max'
+p91
+aS'icLc mean'
+p92
+aS'icLc median'
+p93
+aS'icLc cm2'
+p94
+aS'icLc cm3'
+p95
+aS'iscLc min'
+p96
+aS'iscLc 2nd min'
+p97
+aS'iscLc 2nd max'
+p98
+aS'iscLc max'
+p99
+aS'iscLc mean'
+p100
+aS'iscLc median'
+p101
+aS'iscLc cm2'
+p102
+aS'iscLc cm3'
+p103
+aS'icLx min'
+p104
+aS'icLx 2nd min'
+p105
+aS'icLx 2nd max'
+p106
+aS'icLx max'
+p107
+aS'icLx mean'
+p108
+aS'icLx median'
+p109
+aS'icLx cm2'
+p110
+aS'icLx cm3'
+p111
+aS'iscLx min'
+p112
+aS'iscLx 2nd min'
+p113
+aS'iscLx 2nd max'
+p114
+aS'iscLx max'
+p115
+aS'iscLx mean'
+p116
+aS'iscLx median'
+p117
+aS'iscLx cm2'
+p118
+aS'iscLx cm3'
+p119
+aS'curvature min'
+p120
+aS'curvature 2nd min'
+p121
+aS'curvature 2nd max'
+p122
+aS'curvature max'
+p123
+aS'curvature mean'
+p124
+aS'curvature median'
+p125
+aS'curvature cm2'
+p126
+aS'curvature cm3'
+p127
+aS'Avg segment diameter min'
+p128
+aS'Avg segment diameter 2nd min'
+p129
+aS'Avg segment diameter 2nd max'
+p130
+aS'Avg segment diameter max'
+p131
+aS'Avg segment diameter mean'
+p132
+aS'Avg segment diameter median'
+p133
+aS'Avg segment diameter cm2'
+p134
+aS'Avg segment diameter cm3'
+p135
+aS'Avg point diameter min'
+p136
+aS'Avg point diameter 2nd min'
+p137
+aS'Avg point diameter 2nd max'
+p138
+aS'Avg point diameter max'
+p139
+aS'Avg point diameter mean'
+p140
+aS'Avg point diameter median'
+p141
+aS'Avg point diameter cm2'
+p142
+aS'Avg point diameter cm3'
+p143
+a.
