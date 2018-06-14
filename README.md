@@ -2,7 +2,7 @@
 
 
 ***
-![alt text](https://raw.githubusercontent.com/neu-spiral/IROP-ASSIST-Package/data/example/examplesTogether.pdf)
+![alt text](https://raw.githubusercontent.com/neu-spiral/IROP-ASSIST-Package/data/example/Segmented/normal.png)
 
 ## Description
 iROP ASSIST is a Python code package for computer-based ROP image analysis. It can be used to generate a severity score from an original image or from the manually segmented mask. Its main purpose is to test the computer-based system developed by iROP ASSIST team on the larger set of images.
