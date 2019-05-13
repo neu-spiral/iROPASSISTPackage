@@ -70,6 +70,7 @@ Detailed description of features can be found the paper.
 
 # Reference
 ---------
+-- Yildiz V, Tian P, Yildiz I et al. "Plus disease in retinopathy of prematurity: convolutional neural network performance using a combined neural network and feature extraction approach". (Submitted to TVST) 
 --Ataer-Cansizoglu, Esra. "Retinal Image Analytics: A Complete Framework from Segmentation to Diagnosis." Order No. 3701264 Northeastern University, 2015. Ann Arbor: ProQuest. Web. 19 Dec. 2016. \
 --Bas E, Ataer-Cansizoglu E, Kalpathy-Cramer J, Erdogmus D. Retinal Vasculature Segmentation using Principal Spanning Forests. IEEE International Symposium on Biomedical Imaging (ISBI). 2012; 1792-1795.
 
