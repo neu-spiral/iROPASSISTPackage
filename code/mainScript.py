@@ -25,11 +25,11 @@ from segment_unet import SegmentUnet
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'Retinal Image Analysis Code ',\
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter) 
-    parser.add_argument('pathToFolder', help='Path to folder which contains images and xlsx file which contains names and disc centers (this folder should be placed in data folder)')
-    parser.add_argument('imageNamesXlsFile', help='Name of the xlsx file which contains names and disc centers') 
-    parser.add_argument('scoreFileName', help='Name of the xlsx File in which output scores are stored')
+    parser.add_argument('pathToFolder', help='Path to folder which contains images and xlsx/csv file which contains names and disc centers (this folder should be placed in data folder)')
+    parser.add_argument('imageNamesXlsFile', help='Name of the xlsx/csv file which contains names and disc centers') 
+    parser.add_argument('scoreFileName', help='Name of the xlsx/csv File in which output scores are stored')
     parser.add_argument('--saveDebug',default=1 ,help="If you want to save the segmented image, features, centerline points of the vessel, this should be 1.")
-    parser.add_argument('--featureFileName',default='Features', help='Name of the xlsx File in which output features are stored')
+    parser.add_argument('--featureFileName',default='Features.xlsx', help='Name of the xlsx/csv File in which output features are stored')
     parser.add_argument('--predictPlus',default=1, help='The system would predict image severity score in Plus or higher category by default. If you want to predict severity score in Normal category, this should be 0.')
     args = parser.parse_args()
        
@@ -38,40 +38,67 @@ if __name__ == "__main__":
         path+= "/"     
     path = '../data/' + path
     
+#    imageNames= args.imageNamesXlsFile
+#    if imageNames[-5:] != ".xlsx":
+#        imageNames=imageNames[:-5] + ".xlsx"
+#  
+#    if args.saveDebug:
+#        featureFileName=args.featureFileName
+#        if featureFileName[-5:] != ".xlsx":
+#            featureFileName+= ".xlsx"
+# 
     imageNames= args.imageNamesXlsFile
-    if imageNames[-5:] != ".xlsx":
-        imageNames=imageNames[:-5] + ".xlsx"
+    if imageNames[-5:] != ".xlsx" and imageNames[-4:] != ".csv":
+        print "imageNames file name must end with .xlsx or .csv"
+        sys.exit()
   
     if args.saveDebug:
         featureFileName=args.featureFileName
-        if featureFileName[-4:] != ".xlsx":
-            featureFileName+= ".xlsx"
+        if featureFileName[-5:] != ".xlsx" and featureFileName[-4:] != ".csv":
+            print "feature file name must end with .xlsx or .csv "
+            sys.exit()
+
+
+#    scoreFileName = args.scoreFileName
+#    if scoreFileName[-5:] != ".xlsx":
+#        scoreFileName+= ".xlsx"
 
     scoreFileName = args.scoreFileName
-    if scoreFileName[-4:] != ".xlsx":
-        scoreFileName+= ".xlsx"
-
+    if scoreFileName[-5:] != ".xlsx" and scoreFileName[-4:] != ".csv":
+        print "score file name must end with .xlsx or .csv "
+        sys.exit()
+            
     isPlus = args.predictPlus 
     
-    segmentationFileName= 'Segmented'    
-    xl = pd.ExcelFile(path+imageNames)
-    first_sheet = xl.parse(xl.sheet_names[0])
+    segmentationFileName= 'Segmented'  
+    if imageNames[-5:] == ".xlsx":
+        xl = pd.ExcelFile(path+imageNames)
+        first_sheet = xl.parse(xl.sheet_names[0])
+    else:
+        first_sheet = pd.read_csv(path+imageNames, sep=',')
+
 
     with open('../parameters/featureList.txt','rb') as f:
         featNames= pickle.load(f)
         
     if args.saveDebug:            
         outputFeatureDf = pd.DataFrame([],columns=['Image Name']+ featNames )#'SegmentedImageName', 'Features'
-        featureWriter = pd.ExcelWriter(path+featureFileName, engine='xlsxwriter')
-        outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1')
+        if featureFileName[-5:] == ".xlsx":
+            featureWriter = pd.ExcelWriter(path+featureFileName, engine='xlsxwriter')
+            outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1')
+        else:
+            outputFeatureDf.to_csv(path+featureFileName)
 
 #    featureList=['DistanceToDiscCenter','CumulativeTortuosityIndex','IntegratedCurvature(IC)','IntegratedSquaredCurvature(ISC)'\
 #                 ,'ICNormalizedbyChordLength','ICNormalizedbyCurveLength','ISCNormalizedbyChordLength','ISCNormalizedbyCurveLength','NormofAcceleration',\
 #                 'Curvature','AverageSegmentDiameter','AveragePointDiameter']
 
     outputScoreDf = pd.DataFrame([],columns=['SegmentedImageName','Score'])
-    scoreWriter = pd.ExcelWriter(path+scoreFileName, engine='xlsxwriter')
-    outputScoreDf.to_excel(scoreWriter, sheet_name='Sheet1')
+    if scoreFileName[-5:] == ".xlsx":
+        scoreWriter = pd.ExcelWriter(path+scoreFileName, engine='xlsxwriter')
+        outputScoreDf.to_excel(scoreWriter, sheet_name='Sheet1')
+    else:
+        outputScoreDf.to_csv(path+scoreFileName)
 
 
     
@@ -125,13 +152,20 @@ if __name__ == "__main__":
             '" could not be found! (Either segmentation code failed or segmanted image is not provided in the folder)')
 
     if args.saveDebug: 
-        outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1',index=False)
-        featureWriter.save()
+        if featureFileName[-5:] == ".xlsx":
+            outputFeatureDf.to_excel(featureWriter, sheet_name='Sheet1',index=False)
+            featureWriter.save()
+        else:
+            outputFeatureDf.to_csv(path+featureFileName, index=False)
+            
+    if scoreFileName[-5:] == ".xlsx":
+        outputScoreDf.to_excel(scoreWriter, sheet_name='Sheet1',index=False)
+        scoreWriter.sheets['Sheet1'].set_column('A:Z',20)
+        scoreWriter.save()
+    else:
+        outputScoreDf.to_csv(path+scoreFileName)
 
-    outputScoreDf.to_excel(scoreWriter, sheet_name='Sheet1',index=False)
-    scoreWriter.sheets['Sheet1'].set_column('A:Z',20)
-    scoreWriter.save()
-  
+ 
 
     
 
